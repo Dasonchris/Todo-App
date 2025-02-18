@@ -1,27 +1,56 @@
-/* Resets */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap');
+
+/* Resets and base styles */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-*:focus-visible {
-  outline: 3px dashed #228bec;
-  outline-offset: 0;
+
+:root {
+  --color-bg: #030303;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-primary: #9b59ff;
+  --color-secondary: #3498db;
+  --color-accent: #ff79c6;
+  --font-sans: 'Poppins', sans-serif;
+  --font-display: 'Pacifico', cursive;
 }
+
 html {
-  font: 62.5% / 1.15 sans-serif;
+  font: 62.5% / 1.15 'Poppins', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
+
+body {
+  font: 1.6rem/1.25 'Poppins', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, rgba(155, 89, 182, 0.1), rgba(41, 128, 185, 0.1));
+}
+
 h1,
 h2 {
   margin-bottom: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-text);
 }
+
 ul {
   list-style: none;
   padding: 0;
 }
+
 button {
-  -moz-osx-font-smoothing: inherit;
-  -webkit-font-smoothing: inherit;
+  -webkit-font-smoothing: antialiased;
   appearance: none;
   background: transparent;
   border: none;
@@ -32,107 +61,125 @@ button {
   overflow: visible;
   padding: 0;
   width: auto;
+  transition: all 0.3s ease;
 }
+
 button::-moz-focus-inner {
   border: 0;
 }
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
-}
-button,
-input {
-  overflow: visible;
-}
+
 input[type="text"] {
-  border-radius: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+  padding: 1rem;
+  transition: all 0.3s ease;
 }
-body {
-  background-color: #f5f5f5;
-  color: #4d4d4d;
-  font: 1.6rem/1.25 Arial, sans-serif;
-  margin: 0 auto;
-  max-width: 68rem;
-  width: 100%;
+
+input[type="text"]:focus-visible {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(155, 89, 255, 0.3);
+  outline: none;
 }
+
 @media screen and (min-width: 620px) {
   body {
     font-size: 1.9rem;
     line-height: 1.31579;
   }
 }
-/* End resets */
+
 /* Global styles */
-.form-group > input[type="text"] {
-  display: inline-block;
-  margin-top: 0.4rem;
-}
 .btn {
-  border: 0.2rem solid #4d4d4d;
+  background: linear-gradient(145deg, var(--color-primary), var(--color-secondary));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   cursor: pointer;
-  padding: 0.8rem 1rem 0.7rem;
+  padding: 0.8rem 1rem;
   text-transform: capitalize;
+  color: var(--color-text);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(155, 89, 255, 0.3);
 }
+
+.btn:hover {
+  background: linear-gradient(145deg, var(--color-secondary), var(--color-primary));
+  box-shadow: 0 0 15px rgba(155, 89, 255, 0.5);
+}
+
 .btn.toggle-btn {
-  border-color: #d3d3d3;
+  border-color: rgba(255, 255, 255, 0.1);
   border-width: 1px;
 }
+
 .btn.toggle-btn[aria-pressed="true"] {
-  border-color: #4d4d4d;
+  border-color: var(--color-primary);
   text-decoration: underline;
 }
+
 .btn__danger {
-  background-color: #e90e0e;
-  border-color: #bd2130;
-  color: #fff;
+  background: linear-gradient(145deg, #ff5555, #ff79c6);
+  border-color: #ff5555;
 }
+
 .btn__filter {
-  border-color: lightgrey;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }
+
 .btn__primary {
-  background-color: #000;
-  color: #fff;
+  background: linear-gradient(145deg, var(--color-primary), var(--color-secondary));
 }
+
+.btn__primary:hover {
+  background: linear-gradient(145deg, var(--color-secondary), var(--color-primary));
+}
+
 .btn-group {
   display: flex;
   justify-content: space-between;
 }
+
 .btn-group > * {
   flex: 1 1 49%;
 }
+
 .btn-group > * + * {
   margin-left: 0.8rem;
 }
+
 .label-wrapper {
-  flex: 0 0 100%;
   margin: 0;
+  flex: 0 0 100%;
   text-align: center;
 }
+
 .visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute !important;
   white-space: nowrap;
-  width: 1px;
 }
+
 [class*="stack"] > * {
-  margin-bottom: 0;
   margin-top: 0;
+  margin-bottom: 0;
 }
+
 .stack-small > * + * {
   margin-top: 1.25rem;
 }
+
 .stack-large > * + * {
   margin-top: 2.5rem;
 }
+
 @media screen and (min-width: 550px) {
   .stack-small > * + * {
     margin-top: 1.4rem;
@@ -141,162 +188,275 @@ body {
     margin-top: 2.8rem;
   }
 }
+
 .stack-exception {
   margin-top: 1.2rem;
 }
-/* End global styles */
 
-
-
-/* General app styles */
+/* Todo app specific styles */
 .todoapp {
-  background: #fff;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 2.5rem 5rem 0 rgb(0 0 0 / 10%);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
   margin: 2rem 0 4rem 0;
-  padding: 1rem;
   position: relative;
+  max-width: 70rem;
+  width: 100%;
 }
-@media screen and (min-width: 550px) {
-  .todoapp {
-    padding: 4rem;
-  }
-}
+
 .todoapp > * {
+  max-width: 50rem;
   margin-left: auto;
   margin-right: auto;
-  max-width: 50rem;
 }
+
 .todoapp > form {
   max-width: 100%;
 }
+
 .todoapp > h1 {
   display: block;
-  margin: 0;
-  margin-bottom: 1rem;
   max-width: 100%;
   text-align: center;
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 3.6rem;
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  text-shadow: 0 0 10px rgba(155, 89, 255, 0.5);
 }
+
 .label__lg {
   line-height: 1.01567;
   font-weight: 300;
-  margin-bottom: 1rem;
   padding: 0.8rem;
+  margin-bottom: 1rem;
   text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  color: var(--color-text-muted);
 }
+
 .input__lg {
-  border: 2px solid #000;
-  padding: 2rem;
+  padding: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: var(--color-text);
+  font-size: 1.8rem;
 }
-.input__lg:focus-visible {
-  border-color: #4d4d4d;
-  box-shadow: inset 0 0 0 2px;
+
+.input__lg:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(155, 89, 255, 0.3);
 }
+
 [class*="__lg"] {
   display: inline-block;
-  font-size: 1.9rem;
   width: 100%;
+  font-size: 1.9rem;
 }
+
 [class*="__lg"]:not(:last-child) {
   margin-bottom: 1rem;
 }
+
 @media screen and (min-width: 620px) {
   [class*="__lg"] {
     font-size: 2.4rem;
   }
 }
-/* End general app styles */
 
+.filters {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
 
+.filters > * {
+  margin: 0 0.5rem;
+}
 
 /* Todo item styles */
 .todo {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
 }
+
+.todo:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .todo > * {
   flex: 0 0 100%;
 }
+
 .todo-text {
-  border: 2px solid #565656;
-  min-height: 4.4rem;
-  padding: 0.4rem 0.8rem;
   width: 100%;
+  min-height: 4.4rem;
+  padding: 0.8rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: var(--color-text);
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
 }
-.todo-text:focus-visible {
-  box-shadow: inset 0 0 0 2px;
+
+.todo-text:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(155, 89, 255, 0.3);
 }
-/* End todo item styles */
-
-
 
 /* Checkbox styles */
 .c-cb {
-  -webkit-font-smoothing: antialiased;
-
   box-sizing: border-box;
-  clear: left;
-  display: block;
-  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.25;
-  min-height: 44px;
   padding-left: 40px;
   position: relative;
 }
+
 .c-cb > label::before,
 .c-cb > input[type="checkbox"] {
   box-sizing: border-box;
-  height: 44px;
-  left: -2px;
-  top: -2px;
-  width: 44px;
+  height: 30px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  border-radius: 6px;
 }
+
 .c-cb > input[type="checkbox"] {
-  -webkit-font-smoothing: antialiased;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   cursor: pointer;
   margin: 0;
   opacity: 0;
   position: absolute;
   z-index: 1;
 }
+
 .c-cb > label {
   cursor: pointer;
   display: inline-block;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
   margin-bottom: 0;
-  padding: 8px 15px 5px;
+  padding: 8px 15px 8px 0;
   touch-action: manipulation;
 }
+
 .c-cb > label::before {
-  background: transparent;
-  border: 2px solid currentcolor;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   content: "";
   position: absolute;
+  transition: all 0.3s ease;
 }
-.c-cb > input[type="checkbox"]:focus-visible + label::before {
-  border-width: 4px;
-  outline: 3px dashed #228bec;
+
+.c-cb > input[type="checkbox"]:focus + label::before {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(155, 89, 255, 0.3);
 }
+
 .c-cb > label::after {
-  background: transparent;
   border: solid;
-  border-width: 0 0 5px 5px;
-  border-top-color: transparent;
-  box-sizing: content-box;
+  border-width: 0 2px 2px 0;
   content: "";
-  height: 7px;
+  height: 14px;
   left: 9px;
   opacity: 0;
   position: absolute;
-  top: 11px;
-  transform: rotate(-45deg);
-  width: 18px;
+  top: 50%;
+  transform: translateY(-65%) rotate(45deg);
+  width: 8px;
+  transition: opacity 0.2s ease-in-out;
 }
+
 .c-cb > input[type="checkbox"]:checked + label::after {
   opacity: 1;
+  border-color: var(--color-primary);
 }
-/* End checkbox styles */
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todoapp {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.todo {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Background shapes */
+.background-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  background: linear-gradient(145deg, rgba(155, 89, 255, 0.1), rgba(52, 152, 219, 0.1));
+  border-radius: 50%;
+  animation: float 20s infinite;
+}
+
+.shape:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -150px;
+}
+
+.shape:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  right: -100px;
+}
+
+.shape:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  bottom: -75px;
+  left: 20%;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

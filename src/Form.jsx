@@ -1,8 +1,8 @@
+import React from "react";
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 function Form(props) {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(" ");
 
   function handleChange(event) {
     setName(event.target.value);
@@ -11,19 +11,20 @@ function Form(props) {
   function handleSubmit(event) {
     event.preventDefault();
     props.addTask(name);
-    setName("");
+    setName(" ");
+    // alert("Task added!");
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
-        <label htmlFor="newTodoInput" className="label__lg">
+        <label htmlFor="new-Todo-input" className="label__lg</label>">
           What needs to be done?
         </label>
       </h2>
       <input
         type="text"
-        id="newTodoInput"
+        id="new-Todo-input"
         className="input input__lg"
         name="text"
         autoComplete="off"
@@ -36,9 +37,5 @@ function Form(props) {
     </form>
   );
 }
-
-Form.propTypes = {
-  addTask: PropTypes.func.isRequired,
-};
 
 export default Form;
